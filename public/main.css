@@ -33,7 +33,7 @@
   --grey-700: #8e949e;
   --grey-800: #70747c;
   --grey-900: #51545a;
-  --grey-1000: #333538;
+  --grey-1000: #e2e7ee;
   --grey-1100: #141516;
 
   /* rest */
@@ -42,7 +42,7 @@
   --red-light: #f8d7da;
   --red-dark: #842029;
   --green-light: #d1e7dd;
-  --green-dark: #0f5132;
+  --green-dark: #d4bfc0;
 
   /* typography */
   --headingFont: 'Inconsolata', monospace;
