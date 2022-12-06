@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "In order to run the project, setup .env and set MONGO_URI variable equal to DB connection string.",
   "main": "app.js",
+  "type": "module",
   "dependencies": {
     "array-flatten": "^1.1.1",
     "base64-js": "^1.5.1",
