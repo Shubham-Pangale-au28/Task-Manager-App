@@ -1,8 +1,8 @@
-import express from 'express'
+const express =require('express');
 const app = express();
+const serverless = require('serverless-http')
 const tasks = require('./routes/tasks');
 const mongoose = require('mongoose')
-require('dotenv').config();
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
@@ -13,9 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // DATABASE Connection.....//
-
+const MONGO_URL = "mongodb+srv://shubham40:Pass%40123@cluster0.wlhsk.mongodb.net/?retryWrites=true&w=majority"
+const PORT = 8000
 mongoose
-    .connect(process.env.MONGO_URL)
+    .connect(MONGO_URL)
     .then(() => console.log("Database Connection Successfully!!..."))
     .catch((err) => {
         console.log(err);
@@ -25,13 +26,16 @@ mongoose
 
 // routes
 
-app.use('/api/v1/tasks', tasks);
+app.use('api/v1/tasks', tasks);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 
 
-const port = process.env.PORT || 8000;
+const port = PORT || 8000;
 app.listen(port, () => {
-    console.log('Server Started on Port '+port);
+    console.log('Server Started on Port '+ port);
 });
+
+module.exports= app;
+module.exports.handler = serverless(app)
