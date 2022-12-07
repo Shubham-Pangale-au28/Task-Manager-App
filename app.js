@@ -1,6 +1,5 @@
 const express =require('express');
 const app = express();
-const serverless = require('serverless-http')
 const tasks = require('./routes/tasks');
 const mongoose = require('mongoose')
 const notFound = require('./middleware/not-found');
@@ -36,6 +35,3 @@ const port = PORT || 8000;
 app.listen(port, () => {
     console.log('Server Started on Port '+ port);
 });
-
-module.exports= app;
-module.exports.handler = serverless(app)
